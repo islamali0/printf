@@ -40,8 +40,13 @@ int _printf(const char *format, ...)
 				while (str[string_length] != '\0')
 					string_length++;
 				write(1, str, string_length);
-				acp += string_length;	}	}
-		format++;	}
+				acp += string_length;
+			}
+		}
+
+		format++;
+	}
+
 	va_end(the_list_of_arg);
 	return (acp);
 }
