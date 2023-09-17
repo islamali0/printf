@@ -15,31 +15,33 @@ int _printf(const char *format, ...)
 	va_start(the_list_of_arg, format);
 
 	while (*format)
-		if (*format != '%')/*if formst is not %*/
-			write(1, format, 1);/*write the caracter*/
-			acp++;
-		else/*if format is %*/
-			format++;/* check the next character*/
+	{
+		if (*format != '%')
+		{	write(1, format, 1);
+			acp++;	}
+		else
+		{
+			format++;
 			if (*format == '\0')
 				break;
-			if (*format == '%')/*print the %*/
-				write(1, format, 1);
-				acp++;
-			else if (*format == 'c')/*format is c*/
+			if (*format == '%')
+			{	write(1, format, 1);
+				acp++;	}
+			else if (*format == 'c')
+			{
 				char c = va_arg(the_list_of_arg, int);
 
 				write(1, &c, 1);
-				acp++;
-			else if (*format == 's')/*format is string*/
-				char *str = va_arg(the_list_of_arg, char*);
+				acp++;	}
+			else if (*format == 's')
+			{	char *str = va_arg(the_list_of_arg, char*);
 				int string_length = 0;
 
-				while (str[string_length] != '\0')/*calc  the length*/
+				while (str[string_length] != '\0')
 					string_length++;
-				write(1, str, string_length);/*print the string*/
-				acp += string_length;
-		format++;
-	va_end(the_list_of_string);
+				write(1, str, string_length);
+				acp += string_length;	}	}
+		format++;	}
+	va_end(the_list_of_arg);
 	return (acp);
 }
-
