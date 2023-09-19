@@ -9,7 +9,6 @@
  * @width: get width.
  * @precision: Precision specification
  * @size: Size specifier
- * @a: an integer
  * Return: 1 or 2;
  */
 int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
@@ -20,8 +19,7 @@ int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 		{'c', print_char}, {'s', print_string}, {'%', print_percent},
 		{'i', print_int}, {'d', print_int}, {'b', print_binary},
 		{'u', print_unsigned}, {'o', print_octal}, {'x', print_hexadecimal},
-		{'X', print_hexa_upper},/* {'p', print_pointer}, {'S', print_non_printable},
-		{'r', print_reverse}, {'R', print_rot13string},*/ {'\0', NULL}
+		{'X', print_hexa_upper}, {'\0', NULL}
 	};
 	for (a = 0; fmt_types[a].fmt != '\0'; a++)
 		if (fmt[*ind] == fmt_types[a].fmt)
