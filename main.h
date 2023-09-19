@@ -8,11 +8,11 @@
 #define BUFF_SIZE 1024
 
 /* FLAGS */
-#define F_MINUS 1
-#define F_PLUS 2
-#define F_ZERO 4
-#define F_HASH 8
-#define F_SPACE 16
+#define minus 1
+#define plus 2
+#define zero 4
+#define hash 8
+#define space 16
 
 /* SIZES */
 #define S_LONG 2
@@ -40,7 +40,7 @@ struct fmt
 typedef struct fmt fmt_t;
 
 int _printf(const char *format, ...);
-int handle_print(const char *fmt, int *i,
+int handle_print(const char *fmt, int *a,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
 /****************** FUNCTIONS ******************/
@@ -79,10 +79,10 @@ int print_pointer(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* Funciotns to handle other specifiers */
-int get_flags(const char *format, int *i);
-int get_width(const char *format, int *i, va_list list);
-int get_precision(const char *format, int *i, va_list list);
-int get_size(const char *format, int *i);
+int get_flags(const char *format, int *a);
+int get_width(const char *format, int *a, va_list list);
+int get_precision(const char *format, int *a, va_list list);
+int get_size(const char *format, int *a);
 
 /*Function to print string in reverse*/
 int print_reverse(va_list types, char buffer[],
@@ -98,9 +98,9 @@ int handle_write_char(char c, char buffer[],
 int write_number(int is_positive, int ind, char buffer[],
 	int flags, int width, int precision, int size);
 int write_num(int ind, char bff[], int flags, int width, int precision,
-	int length, char padd, char extra_c);
-int write_pointer(char buffer[], int ind, int length,
-	int width, int flags, char padd, char extra_c, int padd_start);
+	int len, char pad, char extra_c);
+int write_pointer(char buffer[], int ind, int len,
+	int width, int flags, char pad, char extra_c, int pad_start);
 
 int write_unsgnd(int is_negative, int ind,
 char buffer[],
