@@ -122,11 +122,11 @@ int print_int(va_list types, char buffer[],
 		buffer[a--] = '0';
 
 	buffer[BUFF_SIZE - 1] = '\0';
-	number = (unsigned long int)a;
+	number = (unsigned long int)f;
 
-	if (a < 0)
+	if (f < 0)
 	{
-		number = (unsigned long int)((-1) * a);
+		number = (unsigned long int)((-1) * f);
 		is_negative = 1;
 	}
 
